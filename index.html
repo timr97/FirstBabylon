@@ -68,12 +68,6 @@
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    // Our built-in 'sphere' shape.
-    var sphere = BABYLON.MeshBuilder.CreateBox("Tim", {diameter: 2, segments: 32}, scene);
-
-    // Move the sphere upward 1/2 its height
-    sphere.position.y = 2;
-
     // Our built-in 'ground' shape.
     var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
     
@@ -82,9 +76,11 @@
     let groundTexture = new BABYLON.Texture(Assets.textures.checkerboard_normal_png.rootUrl, scene);
     ground.material.diffuseTexture = groundTexture;
 
-    BABYLON.SceneLoader.ImportMesh("", Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename, scene, function(newMeshes){
-        newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
-    });
+    BABYLON.SceneLoader.ImportMeshAsync("", "", "scene.glb");
+
+    //BABYLON.SceneLoader.ImportMesh("houuses", Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename, scene, function(newMeshes){
+    //  newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+    //});
     
     return scene;
 };
